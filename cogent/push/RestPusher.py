@@ -1140,11 +1140,8 @@ class Pusher(object):
         changeditems = theDiff.changed()
         log.debug("---- Items that have changed ----")
         for item in changeditems:
-            #log.debug("--> {0}".format(item))
             ritem = remoteNodes[item]
             litem = localNodes[item]
-            #log.debug("--> Remote Version {0}".format(ritem))
-            #log.debug("--> Local  Version {0}".format(litem))
 
             #Currently we just push the local version and assume it is the most
             #'up to date' version of the location
