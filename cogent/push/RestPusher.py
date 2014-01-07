@@ -410,8 +410,8 @@ class Pusher(object):
 
                 log.debug("Attempting to start SSH Process on port {0}".format(theport))
                     #subprocess.check_output(["./ch-ssh start {0}".format(theport)], shell=True)
-                proc = subprocess.Popen(["/opt/cogent-house.clustered/cogent/push/ch-ssh",
-                #proc = subprocess.Popen(["./ch-ssh",
+                #proc = subprocess.Popen(["/opt/cogent-house.clustered/cogent/push/ch-ssh",
+                proc = subprocess.Popen(["./ch-ssh",
                                          "start" ,
                                          "{0}".format(theport)],
                                         stderr=subprocess.PIPE)
