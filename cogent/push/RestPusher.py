@@ -322,6 +322,21 @@ class Pusher(object):
         return True
 
 
+    def transferHostname(self):
+        """Transfer this devices hostname to the Remote Server"""
+        log = self.log
+        log.debug("Transfer Hostname")
+        hostname = os.uname()[1]
+        theitem = {"hostname": hostname,
+                   "localtime": datetime.datetime.now().isoformat()}
+        theurl = "{0}pushstatus/".format(self.restUrl)
+        
+        restQry = requests.post(theurl, data = json.dumps(theitem))
+        print restQry
+        jsonBody = restQry.json()
+        log.debug(jsonBody)
+        
+
     def checkRPC(self, hostname = None):
         """Check if this server has any RPC
 
@@ -438,8 +453,8 @@ class Pusher(object):
         self.sync_locations()
 
         self.save_mappings()
-
-        #Moved here for the Sampson Version
+        
+        self.transferHostname()
         self.sync_nodes()
 
         session = self.localsession()
